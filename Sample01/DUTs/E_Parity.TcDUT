@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <DUT Name="E_Parity" Id="{36e41838-7aa2-4cee-8c9f-12846456fd94}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_Parity :
+(
+	None	:= 0,
+	Even	:= 1,
+	Odd		:= 2,
+	Unknown	:= 255
+) BYTE := None;
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

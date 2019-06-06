@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="FB_SerialCommunicationRS232" Id="{c9884d88-d65c-4447-a13f-4478b554a409}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK PUBLIC FB_SerialCommunicationRS232 EXTENDS FB_SerialCommunication
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	nInternalBoudrate	:	UDINT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="FB_init" Id="{86750ea7-a104-44b3-9fe4-803c5400800a}">
+      <Declaration><![CDATA[METHOD FB_init : BOOL
+VAR_INPUT
+	bInitRetains	: BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
+	bInCopyCode		: BOOL; // if TRUE, the instance afterwards gets moved into the copy code (online change)
+	nDatabits    	: BYTE(7..8);
+	eParity         : E_Parity;
+	nStopbits		: BYTE(1..2);
+	nBoudrate		: UDINT;	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[THIS^.nInternalBoudrate := nBoudrate;]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_SerialCommunicationRS232">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_SerialCommunicationRS232.FB_init">
+      <LineId Id="10" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

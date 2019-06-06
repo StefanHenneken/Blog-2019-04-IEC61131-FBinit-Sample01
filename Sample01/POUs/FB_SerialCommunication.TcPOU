@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="FB_SerialCommunication" Id="{218335ff-386f-46ec-a884-7dee1a69d7c2}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK PUBLIC FB_SerialCommunication
+VAR
+	nInternalDatabits      : BYTE(7..8);
+	eInternalParity        : E_Parity;
+	nInternalStopbits	   : BYTE(1..2);	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[;]]></ST>
+    </Implementation>
+    <Property Name="Databits" Id="{3ebbdef2-4871-4ed1-ba6e-01308a92d8e1}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY PUBLIC Databits : BYTE(7..8)]]></Declaration>
+      <Get Name="Get" Id="{9f30611f-90db-4aca-b869-966e2918fe0f}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Databits := this^.nInternalDatabits;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{1b40964b-b760-4af9-94c4-5130b09135fb}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[this^.nInternalDatabits := Databits;]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <Method Name="FB_init" Id="{2e32824c-e8f6-491d-a5cf-e156585ea952}">
+      <Declaration><![CDATA[METHOD FB_init : BOOL
+VAR_INPUT
+	bInitRetains	: BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
+	bInCopyCode		: BOOL; // if TRUE, the instance afterwards gets moved into the copy code (online change)
+	nDatabits    	: BYTE(7..8);
+	eParity         : E_Parity;
+	nStopbits		: BYTE(1..2);
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[THIS^.nInternalDatabits := nDatabits;
+THIS^.eInternalParity := eParity;
+THIS^.nInternalStopbits := nStopbits;
+]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Parity" Id="{ef01b680-49a0-4dff-a000-0a85a131c4ae}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY PUBLIC Parity : E_Parity]]></Declaration>
+      <Get Name="Get" Id="{d9ebaa18-52c9-46ed-8e5c-44c18b14f7e7}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Parity := THIS^.eInternalParity;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{c1dd8c42-ccba-44c6-9bff-360e67a5b463}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[THIS^.eInternalParity := Parity;]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <Property Name="Stopbits" Id="{888ad274-0c71-442c-8b96-891fb56e56de}">
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY PUBLIC Stopbits : BYTE(1..2)]]></Declaration>
+      <Get Name="Get" Id="{6c6e5b98-2053-4410-a83b-493154fbb6d0}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Stopbits := THIS^.nInternalStopbits;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{7e1017cf-233f-41f5-a1fe-50ab64fc8785}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[THIS^.nInternalStopbits := Stopbits;]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <LineIds Name="FB_SerialCommunication">
+      <LineId Id="31" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_SerialCommunication.Databits.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_SerialCommunication.Databits.Set">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_SerialCommunication.FB_init">
+      <LineId Id="13" Count="2" />
+      <LineId Id="55" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_SerialCommunication.Parity.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_SerialCommunication.Parity.Set">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_SerialCommunication.Stopbits.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_SerialCommunication.Stopbits.Set">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

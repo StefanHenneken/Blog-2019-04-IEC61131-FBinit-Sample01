@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="MAIN" Id="{50728c29-9f9a-46da-ad77-0bcd7412a99c}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	fbSerialCommunication 			: FB_SerialCommunication(nDatabits := 8, eParity := E_Parity.Even, nStopbits := 1);
+	fbSerialCommunicationRS232 		: FB_SerialCommunicationRS232(nDatabits := 8, eParity := E_Parity.Even, nStopbits := 1, nBoudRate := 19200);	
+	fbSerialCommunicationCluster	: FB_SerialCommunicationCluster(nDatabits := 8, eParity := E_Parity.None, nStopbits := 1);
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbSerialCommunication();
+fbSerialCommunicationRS232();
+fbSerialCommunicationCluster();
+]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="2" Count="0" />
+      <LineId Id="116" Count="0" />
+      <LineId Id="124" Count="0" />
+      <LineId Id="134" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
