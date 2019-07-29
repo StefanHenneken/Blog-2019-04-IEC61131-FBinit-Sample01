@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.0">
   <POU Name="FB_SerialCommunicationRS232" Id="{c9884d88-d65c-4447-a13f-4478b554a409}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK PUBLIC FB_SerialCommunicationRS232 EXTENDS FB_SerialCommunication
 VAR_INPUT
@@ -7,7 +7,7 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-	nInternalBoudrate	:	UDINT;
+	nInternalBaudrate	:	UDINT;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -21,11 +21,11 @@ VAR_INPUT
 	nDatabits    	: BYTE(7..8);
 	eParity         : E_Parity;
 	nStopbits		: BYTE(1..2);
-	nBoudrate		: UDINT;	
+	nBaudrate		: UDINT;	
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[THIS^.nInternalBoudrate := nBoudrate;]]></ST>
+        <ST><![CDATA[THIS^.nInternalBaudrate := nBaudrate;]]></ST>
       </Implementation>
     </Method>
     <LineIds Name="FB_SerialCommunicationRS232">
